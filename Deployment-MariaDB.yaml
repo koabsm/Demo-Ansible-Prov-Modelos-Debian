@@ -1,0 +1,19 @@
+---
+-
+   name: Configura Mysql 
+   hosts: all
+   tasks: 
+
+
+     - name: Install MariaDB
+       package: 
+          name: "{{ item }}"
+         state: present 
+       loop:
+         - mariadb-server 
+    
+     - name: Start Mysql 
+       service: 
+          name: mysql
+          state: started
+          enabled: yes
