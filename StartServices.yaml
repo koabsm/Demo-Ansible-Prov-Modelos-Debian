@@ -1,0 +1,18 @@
+---
+-
+   name: Start todos sistemas  
+   hosts: all
+ 
+   tasks:
+   
+     - name: Stop Mysql 
+       service: 
+          name: mysql
+          state: started
+          enabled: yes
+          
+     - name: Stop Apache 
+       service: 
+          name: apache2
+          state: started
+          enabled: yes
