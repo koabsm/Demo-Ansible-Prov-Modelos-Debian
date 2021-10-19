@@ -1,0 +1,44 @@
+---
+- 
+   name: Configura Ambiente Debian 
+   hosts: all 
+   tasks: 
+  
+     - name: Install repositorio php 
+       package: 
+          name: "{{ item }}"
+          state: present 
+       loop:
+         - software-properties-common 
+         - ca-certificates 
+         - lsb-release 
+         - apt-transport-https 
+         - gnupg
+
+     - name: Run Certificate
+       shell: "wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -"
+
+     - name: Set  PHP repository 
+       copy:
+         content: | 
+             deb https://packages.sury.org/php/ bullseye main 
+         dest: /etc/apt/sources.list.d/php.list 
+
+     - name: Update all packages to their latest version
+       apt:
+       update_cache: yes
+
+     - name: Set Repository Debian 
+       ansible.builtin.apt_repository:
+               repo: "{{ item }}"
+               state: present
+       loop:
+         - "deb http://deb.debian.org/debian bullseye main"
+         - "deb-src http://deb.debian.org/debian bullseye main"
+
+     - name: Install sudo
+       package:
+          name: "{{ item }}"
+         state: present 
+       loop:
+         - sudo
