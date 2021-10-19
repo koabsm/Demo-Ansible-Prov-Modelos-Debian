@@ -13,15 +13,15 @@
               
       - name: Rede 
         ansible.builtin.debug:
-          msg: Endereco IP  {{ ansible_all_ipv4_addresses }} - 
+          msg: Endereco IP  {{ ansible_all_ipv4_addresses }} 
           
       - name: Sistema  
         ansible.builtin.debug:
           msg: |
-          Arquitetura {{ ansible_architecture }}
-          SO {{ ansible_distribution_file_variety }} 
-          Release {{ ansible_distribution_release }} 
-          Memoria {{ ansible_memory_mb }} 
+            Arquitetura {{ ansible_architecture }}
+            SO {{ ansible_distribution_file_variety }} 
+            Release {{ ansible_distribution_release }} 
+            Memoria {{ ansible_memory_mb }} 
           
           
           
