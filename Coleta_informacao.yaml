@@ -1,0 +1,12 @@
+---
+-
+   name: Coleta informacao 
+   hosts: 10.211.55.20 
+   tasks: 
+
+      - name: Coleta informacao fatos
+        ansible.builtin.setup:
+           filter:
+              - 'ansible_distribution'
+              - 'ansible_machine_id'
+              - 'ansible_*_mb'
