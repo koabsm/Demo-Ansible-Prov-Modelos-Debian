@@ -1,0 +1,50 @@
+---
+- 
+   name: Configura Ambiente Debian - Remove Pre Ambiente
+   hosts: all 
+   tasks: 
+  
+     
+     - name: Configura Debian Repositorio padrao
+       ansible.builtin.apt_repository:
+               repo: "{{ item }}"
+               state: absent
+       loop:
+         - "deb http://deb.debian.org/debian bullseye main"
+         - "deb-src http://deb.debian.org/debian bullseye main"
+
+     - name: Update all packages to their latest version
+       apt:
+         update_cache: yes
+     
+     - name: Install sudo
+       package:
+          name: "{{ item }}"
+          state: absent 
+       loop:
+         - sudo
+         
+     - name: Instala repositorio php 
+       package: 
+          name: "{{ item }}"
+          state: absent 
+       loop:
+         - software-properties-common 
+         - ca-certificates 
+         - lsb-release 
+         - apt-transport-https 
+         - gnupg
+
+ #    - name: Executa Certificate
+ #      shell: "wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -"
+
+ #    - name: Habilita  PHP repository 
+ #      copy:
+ #        content: | 
+ #            deb https://packages.sury.org/php/ bullseye main 
+ #        dest: /etc/apt/sources.list.d/php.list 
+
+     - name: Update all packages to their latest version
+       apt:
+         update_cache: yes
+
