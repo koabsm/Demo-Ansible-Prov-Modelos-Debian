@@ -4,31 +4,8 @@
    hosts: all 
    tasks: 
   
-     - name: Install repositorio php 
-       package: 
-          name: "{{ item }}"
-          state: present 
-       loop:
-         - software-properties-common 
-         - ca-certificates 
-         - lsb-release 
-         - apt-transport-https 
-         - gnupg
-
-     - name: Run Certificate
-       shell: "wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -"
-
-     - name: Set  PHP repository 
-       copy:
-         content: | 
-             deb https://packages.sury.org/php/ bullseye main 
-         dest: /etc/apt/sources.list.d/php.list 
-
-     - name: Update all packages to their latest version
-       apt:
-         update_cache: yes
-
-     - name: Set Repository Debian 
+     
+     - name: Configura Debian Repositorio padrao
        ansible.builtin.apt_repository:
                repo: "{{ item }}"
                state: present
@@ -42,3 +19,28 @@
           state: present 
        loop:
          - sudo
+         
+     - name: Instala repositorio php 
+       package: 
+          name: "{{ item }}"
+          state: present 
+       loop:
+         - software-properties-common 
+         - ca-certificates 
+         - lsb-release 
+         - apt-transport-https 
+         - gnupg
+
+     - name: Executa Certificate
+       shell: "wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -"
+
+     - name: Habilita  PHP repository 
+       copy:
+         content: | 
+             deb https://packages.sury.org/php/ bullseye main 
+         dest: /etc/apt/sources.list.d/php.list 
+
+     - name: Update all packages to their latest version
+       apt:
+         update_cache: yes
+
