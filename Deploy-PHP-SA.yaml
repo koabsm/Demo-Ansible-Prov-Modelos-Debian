@@ -12,7 +12,7 @@
             group: root
             mode: 0644
 
-     - name: Install packages Debian Exemplo - Joomla
+     - name: Install packages Debian Exemplo 
        package:
           name: "{{ item }}"
           state: present 
