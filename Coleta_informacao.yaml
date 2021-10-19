@@ -1,7 +1,7 @@
 ---
 -
    name: Coleta informacao 
-   hosts: 10.211.55.20 
+   hosts: all
    tasks: 
 
       - name: Coleta informacao fatos
