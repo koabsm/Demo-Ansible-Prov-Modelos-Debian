@@ -12,7 +12,7 @@
      - name: Install MariaDB
        package: 
           name: "{{ item }}"
-         state: present 
+          state: present 
        loop:
          - mariadb-server 
     
