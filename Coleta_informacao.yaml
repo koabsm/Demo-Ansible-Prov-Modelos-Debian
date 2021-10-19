@@ -11,7 +11,19 @@
               - 'ansible_machine_id'
               - 'ansible_*_mb'
               
-      - name: Teste 
+      - name: Rede 
         ansible.builtin.debug:
-          msg: gateway {{ ansible_default_ipv4.gateway }}
+          msg: Endereco IP  {{ ansible_all_ipv4_addresses }} - 
+          
+       - name: Sistema  
+        ansible.builtin.debug:
+          msg: |
+          Arquitetura {{ ansible_architecture }}
+          SO {{ ansible_distribution_file_variety }} 
+          Release {{ ansible_distribution_release }} 
+          Memoria {{ ansible_memory_mb }} 
+          
+          
+          
+          
         
