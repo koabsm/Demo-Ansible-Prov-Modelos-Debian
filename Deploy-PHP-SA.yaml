@@ -1,0 +1,52 @@
+---
+# tasks file for demo-debian-buildenv-web
+# Esta role tem como funcao instalar e configurar em um node TESTE Joomla 
+
+- name: Motod configure 
+  template: 
+       src: motd-facts.j2
+       dest: /etc/motd
+       owner: root
+       group: root
+       mode: 0644
+
+
+
+- name: Install packages Debian Exemplo - Joomla
+  package:
+    name: "{{ item }}"
+    state: present 
+  loop:
+    - apache2 
+    - apache2-utils 
+    - libapache2-mod-php7.2 
+    - openssl 
+    - php-imagick 
+    - php7.2-common 
+    - php7.2-curl 
+    - php7.2-gd 
+    - php7.2-imap 
+    - php7.2-intl 
+    - php7.2-json 
+    - php7.2-ldap 
+    - php7.2-mbstring 
+    - php7.2-mysql 
+    - php7.2-pgsql 
+    - php-smbclient 
+    - php-ssh2 
+    - php7.2-sqlite3 
+    - php7.2-xml 
+    - php7.2-zip
+   notify: 
+   - Habilita_servico_apache2
+
+
+
+- name: Get Php release version 
+  shell: php -v 
+  register: saida_command_php_release
+
+- name: Show Debug 
+  debug:
+    msg: "PHP Saida  {{ saida_command_php_release }}"
+  
