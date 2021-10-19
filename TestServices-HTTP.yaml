@@ -1,7 +1,7 @@
 ---
 -
    name: Test Services
-   hosts: http://dweb01.labs.corp
+   hosts: dweb01.labs.corp
    tasks: 
    
       - name: Teste Conexao HTTP 
@@ -10,7 +10,7 @@
      
       - name: Check all port numbers are accessible from the current host
         wait_for:
-            host: http://dweb01.labs.corp
+            host: dweb01.labs.corp
             port: "{{ item }}"
             state: started         # Port should be open
             delay: 0               # No wait before first check (sec)
