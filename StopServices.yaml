@@ -10,11 +10,11 @@
           name: mysql
           state: stopped
           enabled: yes
-          ignore_errors: true
+       ignore_errors: true
           
      - name: Stop Apache 
        service: 
           name: apache2
           state: stopped
           enabled: yes
-          ignore_errors: true
+       ignore_errors: true
