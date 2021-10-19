@@ -1,7 +1,7 @@
 ---
 -
    name: Test Services BD Mysql
-   hosts: http://dweb01.labs.corp
+   hosts: dbd01.labs.corp
    tasks: 
    
  
