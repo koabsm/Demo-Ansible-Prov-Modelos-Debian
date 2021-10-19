@@ -31,8 +31,7 @@
          - php7.2-sqlite3 
          - php7.2-xml 
          - php7.2-zip
-       notify: 
-       - Restart_Apache 
+     
        
      - name: Get Php release version 
        shell: php -v 
@@ -42,11 +41,4 @@
      - name: Show Debug 
        debug:
          msg: "PHP Saida  {{ saida_command_php_release }}"
-  
-   handlers:
-        - name: Restart_Apache 
-          service: 
-             name: apache2
-             state: started
-             enabled: yes
-             ignore_errors: yes
+
