@@ -13,6 +13,10 @@
          - "deb http://deb.debian.org/debian bullseye main"
          - "deb-src http://deb.debian.org/debian bullseye main"
 
+     - name: Update all packages to their latest version
+       apt:
+         update_cache: yes
+     
      - name: Install sudo
        package:
           name: "{{ item }}"
