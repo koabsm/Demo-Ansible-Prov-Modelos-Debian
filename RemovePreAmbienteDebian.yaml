@@ -5,7 +5,7 @@
    tasks: 
   
      
-     - name: Configura Debian Repositorio padrao
+     - name: Desconfigura Debian Repositorio padrao
        ansible.builtin.apt_repository:
                repo: "{{ item }}"
                state: absent
@@ -17,14 +17,14 @@
        apt:
          update_cache: yes
      
-     - name: Install sudo
+     - name: Remove sudo
        package:
           name: "{{ item }}"
           state: absent 
        loop:
          - sudo
          
-     - name: Instala repositorio php 
+     - name: Remove repositorio php 
        package: 
           name: "{{ item }}"
           state: absent 
