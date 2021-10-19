@@ -1,6 +1,6 @@
 ---
 - 
-   name: Configura Ambiente Debian - Remove Pre Ambiente
+   name: Configura Ambiente Debian - Deply PHP SA
    hosts: all 
    tasks:
 
@@ -48,7 +48,7 @@
        debug:
          msg: "PHP Saida  {{ saida_command_php_release }}"
   
-     handlers:
+   handlers:
         - name: Restart_Apache 
           service: 
              name: apache2
