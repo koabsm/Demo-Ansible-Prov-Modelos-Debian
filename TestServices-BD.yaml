@@ -1,0 +1,19 @@
+---
+-
+   name: Test Services BD Mysql
+   hosts: http://dweb01.labs.corp
+   tasks: 
+   
+ 
+      - name: Check all port numbers are accessible from the current host
+        wait_for:
+            host: dbd01.labs.corp
+            port: "{{ item }}"
+            state: started         # Port should be open
+            delay: 0               # No wait before first check (sec)
+            timeout: 3             # Stop checking after timeout (sec)
+        ignore_errors: yes
+        with_items:
+            - 3306
+    
+       
