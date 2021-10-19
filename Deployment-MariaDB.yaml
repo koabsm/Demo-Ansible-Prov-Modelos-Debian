@@ -2,6 +2,10 @@
 -
    name: Configura Mysql 
    hosts: all
+   roles: 
+     - name: Configura Mysql de forma segura
+       role: ansible-role-mysql_secure_installation
+
    tasks: 
 
 
@@ -17,3 +21,4 @@
           name: mysql
           state: started
           enabled: yes
+          
