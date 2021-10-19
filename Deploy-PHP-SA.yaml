@@ -52,4 +52,5 @@
      - name: Restart Apache 
        service: 
           name: apache2
-          status: restarted
+          state: started
+          enable: yes
