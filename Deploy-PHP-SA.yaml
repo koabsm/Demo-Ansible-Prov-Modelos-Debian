@@ -38,19 +38,19 @@
          - php7.2-xml 
          - php7.2-zip
        notify: 
-       - Restart Apache 
+       - Restart_Apache 
        
-       - name: Get Php release version 
-         shell: php -v 
-         register: saida_command_php_release
+     - name: Get Php release version 
+       shell: php -v 
+       register: saida_command_php_release
 
-       - name: Show Debug 
-         debug:
-           msg: "PHP Saida  {{ saida_command_php_release }}"
+     - name: Show Debug 
+       debug:
+         msg: "PHP Saida  {{ saida_command_php_release }}"
   
-   handlers:
-     - name: Restart Apache 
-       service: 
-          name: apache2
-          state: started
-          enable: yes
+     handlers:
+        - name: Restart_Apache 
+          service: 
+             name: apache2
+             state: started
+             enable: yes
