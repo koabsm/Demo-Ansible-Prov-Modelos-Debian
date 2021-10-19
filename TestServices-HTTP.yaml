@@ -1,0 +1,11 @@
+---
+-
+   name: Test Services
+   hosts: all
+   tasks: 
+   
+      - name: Teste Conexao HTTP 
+        uri:
+         url: http://dweb01.labs.corp
+         
+       
